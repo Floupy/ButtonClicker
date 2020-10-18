@@ -15,16 +15,18 @@ namespace ButtonClicker
         int dsec = 0;
         int sec = 0;
         int min = 0;
+        
 
         public Form1()
         {
             InitializeComponent();
+            StartGame();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             MainTimer.Start();
-            this.MainProgressBar.Increment(10);
+            MainProgressBar.Increment(10);
             ProgressBarComplete();
         }
 
@@ -56,40 +58,88 @@ namespace ButtonClicker
         }
         private void ProgressBarComplete()
         {
-            if(MainProgressBar.Value == MainProgressBar.Maximum)
+            if (MainProgressBar.Value == MainProgressBar.Maximum)
             {
                 MainTimer.Stop();
-                WinText.ForeColor = Color.Black;
+                WinText.Enabled = true;
+                WinText.Visible = true;
             }
-            
-            
-            {
 
-            }
-            
-
-            
-            
         }
 
         private void ClickAmount10_Click(object sender, EventArgs e)
         {
             MainProgressBar.Minimum = (0);
             MainProgressBar.Maximum = (100);
-            
-            
+            ClickAmount10.Enabled = false;
+            ClickAmount25.Enabled = false;
+            ClickAmount25.Visible = false;
+            ClickAmount50.Enabled = false;
+            ClickAmount50.Visible = false;
+            MainButton.Enabled = true;
+
+
+
         }
 
         private void ClickAmount25_Click(object sender, EventArgs e)
         {
             MainProgressBar.Minimum = (0);
             MainProgressBar.Maximum = (250);
+            ClickAmount10.Enabled = false;
+            ClickAmount10.Visible = false;
+            ClickAmount25.Enabled = false;
+            ClickAmount50.Enabled = false;
+            ClickAmount50.Visible = false;
+            MainButton.Enabled = true;
         }
 
         private void ClickAmount50_Click(object sender, EventArgs e)
         {
             MainProgressBar.Minimum = (0);
             MainProgressBar.Maximum = (500);
+            ClickAmount10.Enabled = false;
+            ClickAmount10.Visible = false;
+            ClickAmount25.Enabled = false;
+            ClickAmount25.Visible = false;
+            ClickAmount50.Enabled = false;
+            MainButton.Enabled = true;
         }
-    }
-}
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            ClickAmount10.Visible = true;
+            ClickAmount10.Enabled = true;
+            ClickAmount25.Enabled = true;
+            ClickAmount25.Visible = true;
+            ClickAmount50.Enabled = true;
+            ClickAmount50.Visible = true;
+            dsec = sec = 0;
+            UpdateClockDisplay();
+            MainProgressBar.Value = (0);
+            StartGame();
+
+        }
+
+        private void ClicksPerSecondStats()
+        {
+            
+
+
+        }
+
+        private void StartGame()
+        {
+            MainButton.Enabled = false;
+            MainButton.Visible = false;
+            MainProgressBar.Visible = false;
+            MainProgressBar.Enabled = false;
+            ClockDisplay.Enabled = false;
+            ClockDisplay.Visible = false;
+            WinText.Visible = false;
+        }
+
+
+
+    } }
+
